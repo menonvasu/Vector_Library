@@ -1,0 +1,8 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="../Math_Tests_Google/Math_Tests_Google.vcxproj" Id="4fed6aed-a430-48c3-b037-a647334389ef" />
+  <Project Path="Math_Library.vcxproj" Id="9331d5fe-ff7b-4a6d-86a5-c8f590f93c10" />
+</Solution>
