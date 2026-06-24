@@ -4,7 +4,8 @@
 #include <cmath>
 
 template <typename T>
-struct Vector3 {
+
+struct alignas(16) Vector3 {
 	T x{ };
 	T y{ };
 	T z{ };
@@ -13,6 +14,13 @@ struct Vector3 {
 		x += other.x;
 		y += other.y;
 		z += other.z;
+		return *this;
+	}
+
+	Vector3& operator-=(const Vector3& other) {
+		x -= other.x;
+		y -= other.y;
+		z -= other.z;
 		return *this;
 	}
 
@@ -49,6 +57,11 @@ Vector3<T> operator+(Vector3<T> lhs, const Vector3<T>& rhs) {
 	return lhs += rhs;
 }
 
+template <typename T> 
+Vector3<T> operator-(Vector3<T> lhs, const Vector3<T>& rhs) {
+	return lhs -= rhs;
+}
+
 template <typename T>
 Vector3<T> operator*(Vector3<T> current, T scalar) {
 	return current *= scalar;
@@ -78,5 +91,11 @@ Vector3<T> cross(const Vector3<T>& lhs, const Vector3<T>& rhs) {
 	result.z = (lhs.x * rhs.y) - (lhs.y * rhs.x);
 	return result;
 }
+
+template <typename T> 
+Vector3<T> operator-(const Vector3<T>& current) {
+	return Vector3<T>{ -current.x, -current.y, -current.z };
+}
+
 
 #endif 
